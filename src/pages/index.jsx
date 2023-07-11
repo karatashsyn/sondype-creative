@@ -10,7 +10,7 @@ export default function Home() {
   const firstSectionRef = useRef(null)
   const secondSectionRef = useRef(null)
   const thirdSectionRef = useRef(null)
-  const imgRef = useRef(null)
+  const imgContainerRef = useRef(null)
   const { firstRatio, secondRatio, thirdRatio } = useIntersectionRatio({
     firstSectionRef,
     secondSectionRef,
@@ -18,17 +18,18 @@ export default function Home() {
   })
 
   useEffect(() => {
-    console.log('second ratio: ' + secondRatio)
-
-    imgRef.current.style = 'scale:' + secondRatio + '%;'
+    if (secondRatio < 50) {
+      imgContainerRef.current.style =
+        'scale:' + (secondRatio > 0 ? +secondRatio + 20 : 20) + '%;'
+    }
   }, [secondRatio])
 
   return (
     <RootLayout>
-      <div className="maincontainer pt-24">
+      <div className="maincontainer">
         <section
           ref={firstSectionRef}
-          className="first px-[196px] h-[100vh] pt-24"
+          className="first px-[196px] h-[100vh] pt-48"
         >
           <div className="">
             <h1 className="text-8xl font-bold">
@@ -53,11 +54,11 @@ export default function Home() {
         </section>
         <section
           ref={secondSectionRef}
-          className="second px-[196px] h-[200vh]  "
+          className="second px-[196px] h-[200vh] bg-red-500"
         >
-          <div className="w-full flex justify-center" ref={imgRef}>
+          <div className="flex w-full justify-center" ref={imgContainerRef}>
             <Image
-              className={`eyeImage w-auto h-auto scale-`}
+              className={`eyeImage `}
               src={'/eye.png'}
               width={560}
               height={890}
