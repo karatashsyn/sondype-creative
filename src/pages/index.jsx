@@ -10,6 +10,7 @@ export default function Home() {
   const firstSectionRef = useRef(null)
   const secondSectionRef = useRef(null)
   const thirdSectionRef = useRef(null)
+  const imgRef = useRef(null)
   const { firstRatio, secondRatio, thirdRatio } = useIntersectionRatio({
     firstSectionRef,
     secondSectionRef,
@@ -17,10 +18,10 @@ export default function Home() {
   })
 
   useEffect(() => {
-    console.log('First: ' + firstRatio)
-    console.log('Second: ' + secondRatio)
-    console.log('Third: ' + thirdRatio)
-  }, [firstRatio, secondRatio, thirdRatio])
+    console.log('second ratio: ' + secondRatio)
+
+    imgRef.current.style = 'scale:' + secondRatio + '%;'
+  }, [secondRatio])
 
   return (
     <RootLayout>
@@ -52,15 +53,17 @@ export default function Home() {
         </section>
         <section
           ref={secondSectionRef}
-          className="second px-[196px] h-[200vh] pt-24 bg-red-200"
+          className="second px-[196px] h-[200vh]  "
         >
-          <Image
-            className="eyeImage w-auto h-auto"
-            src={'/eye.png'}
-            width={360}
-            height={360}
-            alt="Eye Image"
-          />
+          <div className="w-full flex justify-center" ref={imgRef}>
+            <Image
+              className={`eyeImage w-auto h-auto scale-`}
+              src={'/eye.png'}
+              width={560}
+              height={890}
+              alt="Eye Image"
+            />
+          </div>
         </section>
         <section
           ref={thirdSectionRef}

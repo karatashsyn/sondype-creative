@@ -27,9 +27,9 @@ export default function useIntersectionRatio({
           thirdSectionRef.current.offsetHeight) *
         100
 
-      setFirstRatio(firstResult >= 0 ? firstResult : 0)
-      setSecondRatio(secondResult >= 0 ? secondResult : 0)
-      setThirdRatio(thirdResult >= 0 ? thirdResult : 0)
+      setFirstRatio(firstResult >= 0 ? firstResult.toFixed(0) : 0)
+      setSecondRatio(secondResult >= 0 ? secondResult.toFixed(0) : 0)
+      setThirdRatio(thirdResult >= 0 ? thirdResult.toFixed(0) : 0)
     }
 
     window.addEventListener('scroll', arrangeIntersectionRatios)
