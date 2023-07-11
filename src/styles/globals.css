@@ -2,34 +2,71 @@
 @tailwind components;
 @tailwind utilities;
 
-
-@font-face{
+@font-face {
   font-family: 'Gilroy';
   src: url('/fonts/Gilroy-Light.ttf') format('truetype');
+  font-weight: lighter;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Gilroy';
+  src: url('/fonts/Gilroy-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
 
-@font-face{
+@font-face {
+  font-family: 'Gilroy';
+  src: url('./../../fonts/Gilroy-Bold.ttf') format('truetype');
+  font-weight: bold;
+  font-style: normal;
+}
+
+@font-face {
   font-family: 'Gilroy';
   src: url('/fonts/Gilroy-ExtraBold.ttf') format('truetype');
   font-weight: bolder;
   font-style: normal;
 }
 
-*{
-  margin:0;
+* {
+  margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: aliceblue;
   font-family: 'Gilroy', sans-serif;
-  font-weight: normal;
+}
+
+.gilroyLight {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: lighter !important;
+}
+
+.gilroyRegular {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: normal !important;
+}
+
+.gilroyBold {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: bold !important;
+}
+
+.gilroyExtraBold {
+  font-family: 'Gilroy', sans-serif;
+  font-weight: bolder !important;
 }
 
 :root {
 }
 
-
 body {
   background-color: #000;
+}
+
+.secret {
+  background-image: linear-gradient(to bottom, #000, #660099);
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
 }
