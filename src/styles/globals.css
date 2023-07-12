@@ -17,7 +17,7 @@
 
 @font-face {
   font-family: 'Gilroy';
-  src: url('./../../fonts/Gilroy-Bold.ttf') format('truetype');
+  src: url('/fonts/Gilroy-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
