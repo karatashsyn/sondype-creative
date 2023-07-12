@@ -5,8 +5,8 @@ import Link from 'next/link'
 export default function Navbar() {
   return (
     <nav
-      className="fixed w-[100vw] px-[80px] flex justify-between py-7 gap-8 bg-black z-10"
-      style={{ boxShadow: '2px 8px 12px 8px black;' }}
+      className="navbar fixed w-[100vw] px-[80px] flex justify-between py-7 gap-8 bg-black z-10"
+      style={{ boxShadow: '2px 8px 16px 8px black' }}
     >
       <SondypeIcon />
       <ul className="flex gap-12 items-center">

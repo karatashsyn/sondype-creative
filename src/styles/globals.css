@@ -37,6 +37,11 @@
   font-family: 'Gilroy', sans-serif;
 }
 
+section {
+  width: 100%;
+  min-height: auto;
+}
+
 .gilroyLight {
   font-family: 'Gilroy', sans-serif;
   font-weight: lighter !important;
