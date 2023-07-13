@@ -12,12 +12,15 @@ export default function Home() {
   const firstSectionRef = useRef(null)
   const secondSectionRef = useRef(null)
   const thirdSectionRef = useRef(null)
-  const imgContainerRef = useRef(null)
+  const eyeContainerRef = useRef(null)
   const firstContentRef = useRef(null)
   const leftContainerRef = useRef(null)
   const leftSmallSpanRef = useRef(null)
   const rightContainerRef = useRef(null)
   const rightSmallSpanRef = useRef(null)
+  const tvContainerRef = useRef(null)
+  const thirdLeftRef = useRef(null)
+  const thirdRightRef = useRef(null)
   const { windowSize } = useWindow()
   const { firstRatio, secondRatio, thirdRatio } = useIntersectionRatio({
     firstSectionRef,
@@ -35,13 +38,12 @@ export default function Home() {
   //88-100 Opacity 0
 
   useEffect(() => {
-    // console.log('third:' + thirdRatio)
     if (secondRatio >= 0 && secondRatio < 38) {
-      imgContainerRef.current.style =
+      eyeContainerRef.current.style =
         'scale:' + (+secondRatio * 1.2 + 20) + '%;'
     }
     if (secondRatio >= 52 && secondRatio < 64) {
-      const eye = imgContainerRef.current
+      const eye = eyeContainerRef.current
       const leftBig = leftContainerRef.current
 
       let eyeStyle = `scale: ${117.6 - +secondRatio}%;`
@@ -52,7 +54,6 @@ export default function Home() {
         'transform:translateY(' +
         (70 - ((+secondRatio - 52) / 12) * 70).toFixed(2) +
         'vh);'
-      // console.log(leftBigStyle)
       leftBig.style = leftBigStyle
     }
     if (secondRatio >= 64 && secondRatio < 70) {
@@ -84,6 +85,38 @@ export default function Home() {
     if (secondRatio >= 100) {
     }
   }, [secondRatio])
+
+  //Third Section Effects
+  //0-12 Bekle
+  //6-30 Tv kuculterek soldaki yaziyi getir
+  //30-54 Sagaki yaziyi getir
+  //54-66 Bekle
+  //66-100 Opacity 0 ve alttaki sectionu getir
+
+  useEffect(() => {
+    if (thirdRatio >= 0 && thirdRatio < 12) {
+    }
+    if (thirdRatio >= 6 && thirdRatio < 30) {
+      const leftSpan = thirdLeftRef.current
+      const tvContainer = tvContainerRef.current
+      const subRatio = ((+thirdRatio - 6) / 24) * 100
+      let tvContainerStyle = 'scale:' + (100 - +subRatio / 2).toFixed(1) + '%;'
+
+      let leftSpanStyle = 'opacity:' + (+subRatio).toFixed(1) + '%;'
+      tvContainer.style = tvContainerStyle
+      leftSpan.style = leftSpanStyle
+    }
+    if (thirdRatio >= 30 && thirdRatio < 54) {
+      const rightSpan = thirdRightRef.current
+      const subRatio = ((+thirdRatio - 30) / 24) * 100
+      let rightSpanStyle = 'opacity:' + (+subRatio).toFixed(1) + '%;'
+      rightSpan.style = rightSpanStyle
+    }
+    if (thirdRatio >= 54 && thirdRatio < 66) {
+    }
+    if (thirdRatio >= 66 && thirdRatio < 100) {
+    }
+  }, [thirdRatio])
 
   return (
     <RootLayout>
@@ -138,7 +171,7 @@ export default function Home() {
 
               <div
                 className=" flex w-[100%] justify-center transition-transform duration-[1s] fade-in "
-                ref={imgContainerRef}
+                ref={eyeContainerRef}
               >
                 <Image
                   className={`eyeImage `}
@@ -170,8 +203,38 @@ export default function Home() {
           </div>
         </CustomContainer>
       </section>
-      <section ref={thirdSectionRef} className="h-[100vh] bg-blue-500 third">
-        hey
+      <section ref={thirdSectionRef} className="h-[300vh] third">
+        <CustomContainer>
+          <div className="sticky top-[100vh] h-[100vh]">
+            <div className=" h-full flex justify-between items-center ">
+              <div
+                className="text-[64px] leading-none min-w-max opacity-0"
+                ref={thirdLeftRef}
+              >
+                <span className="line-through">Eskimek</span> <br />
+                <span className="underline">eskiye</span> göre <br />{' '}
+                <span>daha kolay.</span>
+              </div>
+
+              <div className="" ref={tvContainerRef}>
+                <Image
+                  className={`tvImage`}
+                  src={'/tv.png'}
+                  width={420}
+                  height={420}
+                  alt="Tv Image"
+                />
+              </div>
+              <div
+                className="text-end text-[64px] leading-none min-w-max opacity-0"
+                ref={thirdRightRef}
+              >
+                <span className="">Çağı Yakala</span> <br />
+                <span className="">Geride Kalma.</span>
+              </div>
+            </div>
+          </div>
+        </CustomContainer>
       </section>
     </RootLayout>
   )
