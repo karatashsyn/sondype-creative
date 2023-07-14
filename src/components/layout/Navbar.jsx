@@ -1,7 +1,7 @@
 import React from 'react'
 import SondypeIcon from '../UI/Icons/SondypeIcon'
 import Link from 'next/link'
-
+import MainButton from '../UI/Buttons/MainButton'
 export default function Navbar() {
   return (
     <nav
