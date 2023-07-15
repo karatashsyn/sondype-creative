@@ -5,7 +5,6 @@ export default function useIntersectionRatio({
   thirdSectionRef,
   fourthSectionRef,
 }) {
-  const [firstRatio, setFirstRatio] = useState(0)
   const [secondRatio, setSecondRatio] = useState(0)
   const [thirdRatio, setThirdRatio] = useState(0)
   const [fourthRatio, setFourthRatio] = useState(0)
@@ -13,10 +12,6 @@ export default function useIntersectionRatio({
   useEffect(() => {
     const arrangeIntersectionRatios = () => {
       const scrollBottom = window.scrollY + window.innerHeight
-      // const firstResult =
-      //   ((scrollBottom - firstSectionRef.current.offsetTop) /
-      //     firstSectionRef.current.offsetHeight) *
-      //   100
 
       const secondResult =
         ((scrollBottom - secondSectionRef.current.offsetTop) /
