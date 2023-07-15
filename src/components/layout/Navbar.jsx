@@ -5,10 +5,12 @@ import MainButton from '../UI/Buttons/MainButton'
 export default function Navbar() {
   return (
     <nav
-      className="navbar fixed w-[100vw] px-[80px] flex justify-between py-7 gap-8 bg-black z-10"
+      className="navbar fixed left-0 right-0 w-[100vw] lg:px-[80px] px-[24px] flex justify-between pt-7 pb-2 gap-8 bg-black z-10"
       style={{ boxShadow: '2px 8px 16px 8px black' }}
     >
-      <SondypeIcon />
+      <Link href={'/'} className="cursor-pointer">
+        <SondypeIcon />
+      </Link>
       <ul className="flex gap-12 items-center">
         <Link href={'/contact'}>
           <li className="text-[15px]">İletişim</li>

@@ -3,9 +3,13 @@ import { useState } from 'react'
 export default function useWindow() {
   const [isFullScreen, setIsFullScreen] = useState(true)
   const [windowSize, setWindowSize] = useState(0)
+
+  useEffect(() => {
+    setWindowSize(window.innerWidth)
+  }, [])
   useEffect(() => {
     function handleFullScreenChange() {
-      setWindowSize({ width: window.innerWidth, height: window.innerHeight })
+      setWindowSize(window.innerWidth)
       setIsFullScreen(document.fullscreenElement)
     }
 

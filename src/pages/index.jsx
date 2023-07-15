@@ -43,25 +43,36 @@ export default function Home() {
   //100-112 Transition
 
   useEffect(() => {
+    console.log(windowSize)
+  }, [windowSize])
+
+  useEffect(() => {
     if (secondRatio < 100) {
       secondContentRef.current.style = `position:auto;`
     }
     if (secondRatio >= 0 && secondRatio < 38) {
-      eyeContainerRef.current.style =
-        'scale:' + (+secondRatio * 1.2 + 20) + '%;'
+      eyeContainerRef.current.style = 'scale:' + (+secondRatio + 20) + '%;'
     }
     if (secondRatio >= 52 && secondRatio < 64) {
       const eye = eyeContainerRef.current
       const leftBig = leftContainerRef.current
-
-      let eyeStyle = `scale: ${117.6 - +secondRatio}%;`
-      eyeStyle += ` transform:translateX(${52 - +secondRatio * 1.2}px); `
+      let eyeStyle = `scale: ${110 - +secondRatio}%;`
+      if (windowSize > 760) {
+        eyeStyle += ` transform:translateX(${52 - +secondRatio * 1.2}px); `
+      }
       eye.style = eyeStyle
 
-      let leftBigStyle =
-        'transform:translateY(' +
-        (70 - ((+secondRatio - 52) / 12) * 70).toFixed(2) +
-        'vh);'
+      let leftBigStyle
+      if (windowSize > 760) {
+        leftBigStyle =
+          'bottom:' + -(50 - ((+secondRatio - 52) / 12) * 80).toFixed(2) + '%;'
+      } else {
+        leftBigStyle = `opacity:${(((secondRatio - 52) / 12) * 100).toFixed(
+          1
+        )}%;`
+      }
+      console.log(leftBigStyle)
+
       leftBig.style = leftBigStyle
     }
     if (secondRatio >= 64 && secondRatio < 70) {
@@ -72,10 +83,16 @@ export default function Home() {
     }
     if (secondRatio >= 70 && secondRatio < 82) {
       const rightBig = rightContainerRef.current
-      let rightBigStyle =
-        'transform:translateY(' +
-        (70 - ((+secondRatio - 70) / 12) * 70).toFixed(2) +
-        'vh);'
+      let rightBigStyle
+
+      if (windowSize > 760) {
+        rightBigStyle =
+          'bottom:' + -(50 - ((+secondRatio - 70) / 12) * 80).toFixed(2) + '%;'
+      } else {
+        rightBigStyle = ` opacity:${(((secondRatio - 70) / 12) * 100).toFixed(
+          1
+        )}%;`
+      }
       rightBig.style = rightBigStyle
     }
     if (secondRatio >= 82 && secondRatio < 100) {
@@ -85,11 +102,11 @@ export default function Home() {
       rightSmall.style = rightSmallStyle
     }
 
-    if (secondRatio >= 100 && secondRatio < 112) {
-      const subRatio = ((+secondRatio - 100) / 12) * 100
+    if (secondRatio >= 100 && secondRatio < 124) {
+      const subRatio = ((+secondRatio - 100) / 24) * 100
       secondContentRef.current.style = `opacity:${100 - subRatio}%;`
     }
-  }, [secondRatio])
+  }, [secondRatio, windowSize])
 
   //Third Section Effects
   //0-25 Bekle
@@ -148,15 +165,15 @@ export default function Home() {
       >
         <CustomContainer className="maincontainer">
           <div ref={firstContentRef}>
-            <h1 className="lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none font-bold">
+            <h1 className="lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none .gilroyExtraBold">
               <span className={`${gravitasOne.className}`}>“</span>
               Büyük başarılar, küçük detaylarda{' '}
               <span className="secret">gizlidir</span>.
               <span className={gravitasOne.className}>”</span>
             </h1>
-            <main className="mt-16 md:w-[540px] sm:text-[16px] text-[14px]">
+            <main className="mt-16 md:w-[540px] sm:text-[16px] text-[14px] max-sm:text-center">
               İstanbul’da kurulan{' '}
-              <span className="font-extrabold text-[1.18rem]">
+              <span className="font-extrabold text-[1.18rem] ">
                 {' '}
                 Sondype Creative
               </span>
@@ -172,7 +189,7 @@ export default function Home() {
       <section ref={secondSectionRef} className="second h-[400vh]">
         <div
           className={`flex w-[100%] h-full justify-center  md:px-16 sm:px-8 px-4  ${
-            secondRatio >= 100 ? ' fixedContainer' : ''
+            secondRatio >= 95 ? ' fixedContainer' : ''
           }`}
         >
           <div
@@ -185,12 +202,12 @@ export default function Home() {
               className={`w-full h-[100vh] sticky top-0`}
               ref={secondContentRef}
             >
-              <div className="w-full relative h-full -translate-y-12">
+              <div className="w-full h-full flex justify-center md:flex-row max-md:flex-col max-md:justify-center items-center">
                 <div
-                  className="absolute left:0 top-[50%] translate-y-[70vh]"
+                  className={`absolute max-md:top-[96px] md:bottom-[-100%] md:left-0 max-md:left-6  max-md:opacity-0 `}
                   ref={leftContainerRef}
                 >
-                  <h3 className="text-[90px] leading-none">
+                  <h3 className="xl:text-[96px] lg:text-[72px] md:text-[58px] text-[40px] leading-none">
                     Başarının <br />
                     anahtarı
                   </h3>
@@ -205,23 +222,23 @@ export default function Home() {
                 </div>
 
                 <div
-                  className=" flex w-[100%] justify-center transition-transform duration-[1s] fade-in "
+                  className="flex justify-center  transition-transform duration-[1s] fade-in "
                   ref={eyeContainerRef}
                 >
                   <Image
-                    className={`eyeImage `}
+                    className={`eyeImage lg:w-[600px] md:w-[280px]`}
                     src={'/eye.png'}
-                    width={600}
-                    height={600}
+                    width={windowSize > 760 ? 800 : 240}
+                    height={windowSize > 760 ? 800 : 240}
                     alt="Eye Image"
                   />
                 </div>
 
                 <div
-                  className="absolute top-[50%] right-0 translate-y-[70vh]"
+                  className="absolute max-md:bottom-[52px] md:right-0 max-md:right-6 md:bottom-[-100%] max-md:opacity-0 "
                   ref={rightContainerRef}
                 >
-                  <h3 className=" text-[90px] leading-none">
+                  <h3 className=" xl:text-[90px] lg:text-[72px] md:text-[58px] text-[40px] leading-none ">
                     İnsanların <br />
                     Bakışları
                   </h3>
@@ -242,15 +259,15 @@ export default function Home() {
       <section ref={thirdSectionRef} className="h-[400vh] third ">
         <div
           className={`flex w-[100%] h-full justify-center  md:px-16 sm:px-8 px-4  ${
-            thirdRatio >= 100 ? ' fixedContainer' : ''
+            thirdRatio >= 90 ? ' fixedContainer' : ''
           }`}
         >
           <div className="w-[100%] h-full max-w-6xl">
             {' '}
             <div className="sticky top-0 h-[100vh]">
-              <div className=" h-full flex justify-between items-center ">
+              <div className=" h-full flex max-md:flex-col  max-md:justify-center max-md:gap-2 justify-between items-center ">
                 <div
-                  className="text-[64px] leading-none min-w-max opacity-0"
+                  className="xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0"
                   ref={thirdLeftRef}
                 >
                   <span className="line-through">Eskimek</span> <br />
@@ -260,15 +277,15 @@ export default function Home() {
 
                 <div className="" ref={tvContainerRef}>
                   <Image
-                    className={`tvImage`}
+                    className="tvImage"
                     src={'/tv.png'}
                     width={420}
-                    height={420}
+                    height={300}
                     alt="Tv Image"
                   />
                 </div>
                 <div
-                  className="text-end text-[64px] leading-none min-w-max opacity-0"
+                  className="text-end xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0"
                   ref={thirdRightRef}
                 >
                   <span className="">Çağı Yakala</span> <br />
@@ -293,13 +310,12 @@ export default function Home() {
                   src={'/motif.png'}
                   alt="Motif"
                 />
-                <div className="">
-                  <a
-                    href="#"
-                    className={`text-center text-[48px] absolute left-0 right-0 transition-all duration-1000 ${
-                      fourthRatio >= 52 ? 'bottom-[-50%]' : 'bottom-[-200vh]'
-                    } `}
-                  >
+                <div
+                  className={`w-[100%] flex justify-center fixed  transition-all duration-1000  ${
+                    fourthRatio >= 52 ? 'bottom-[-60%]' : 'bottom-[-200vh]'
+                  }`}
+                >
+                  <a href="#" className={`text-center text-[48px]`}>
                     info@sondype.com
                   </a>
                 </div>
