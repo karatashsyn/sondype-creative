@@ -139,9 +139,8 @@ export default function Home() {
                   }}
                 >
                   <Image
-                    className={`eyeImage lg:w-[600px] md:w-[280px]`}
+                    className={`eyeImage lg:w-[600px] md:w-[280px] bg-red-300`}
                     src={eyeImage}
-                    unoptimized
                     width={windowSize > 768 ? 800 : 240}
                     height={windowSize > 768 ? 800 : 240}
                     alt="Eye Image"
