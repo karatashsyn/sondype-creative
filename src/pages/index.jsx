@@ -7,6 +7,8 @@ import subRatioCalculator from '@/utils/subRatio'
 import Image from 'next/image'
 import CustomContainer from '@/components/UI/CustomContainer'
 import eyeImage from './../../public/eye.png'
+import tvImage from './../../public/tv.png'
+import motifImage from './../../public/motif.png'
 // import FirstLanding from '@/views/landingPage/firstLanding'
 // import SecondLanding from '@/views/landingPage/secondLanding'
 // import ThirdLanding from '@/views/landingPage/thirdLanding'
@@ -139,7 +141,7 @@ export default function Home() {
                   }}
                 >
                   <Image
-                    className={`eyeImage lg:w-[600px] md:w-[280px] bg-red-300`}
+                    className={`eyeImage lg:w-[600px] md:w-[280px]`}
                     src={eyeImage}
                     width={windowSize > 768 ? 800 : 240}
                     height={windowSize > 768 ? 800 : 240}
@@ -228,7 +230,7 @@ export default function Home() {
                 >
                   <Image
                     className="tvImage"
-                    src={'/tv.png'}
+                    src={tvImage}
                     width={420}
                     height={300}
                     alt="Tv Image"
@@ -257,12 +259,7 @@ export default function Home() {
                   fourthRatio >= 52 ? '-translate-y-[30%] scale-50' : ''
                 }`}
               >
-                <Image
-                  width={900}
-                  height={900}
-                  src={'/motif.png'}
-                  alt="Motif"
-                />
+                <Image width={900} height={900} src={motifImage} alt="Motif" />
                 <div
                   className={`w-[100%] flex justify-center fixed  transition-all duration-1000  ${
                     fourthRatio >= 52 ? 'bottom-[-60%]' : 'bottom-[-200vh]'
