@@ -6,6 +6,7 @@ import useWindow from '@/hooks/useWindow'
 import subRatioCalculator from '@/utils/subRatio'
 import Image from 'next/image'
 import CustomContainer from '@/components/UI/CustomContainer'
+import eyeImage from './../../public/eye.png'
 // import FirstLanding from '@/views/landingPage/firstLanding'
 // import SecondLanding from '@/views/landingPage/secondLanding'
 // import ThirdLanding from '@/views/landingPage/thirdLanding'
@@ -139,7 +140,8 @@ export default function Home() {
                 >
                   <Image
                     className={`eyeImage lg:w-[600px] md:w-[280px]`}
-                    src={'/eye.png'}
+                    src={eyeImage}
+                    unoptimized
                     width={windowSize > 768 ? 800 : 240}
                     height={windowSize > 768 ? 800 : 240}
                     alt="Eye Image"
