@@ -94,7 +94,7 @@ export default function Home() {
                     opacity: `${
                       windowSize < 768 && secondRatio < 64
                         ? subRatioCalculator(secondRatio, 52, 64)
-                        : ''
+                        : '100'
                     }%`,
                   }}
                 >
@@ -160,7 +160,7 @@ export default function Home() {
                     opacity: `${
                       windowSize < 768 && secondRatio < 82
                         ? subRatioCalculator(secondRatio, 70, 82)
-                        : ''
+                        : '100'
                     }%`,
                   }}
                 >
