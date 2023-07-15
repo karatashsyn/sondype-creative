@@ -92,8 +92,8 @@ export default function Home() {
                         : ''
                     }%`,
                     opacity: `${
-                      windowSize < 768 && secondRatio >= 52 && secondRatio < 64
-                        ? ((secondRatio - 52) / 12) * 100
+                      windowSize < 768 && secondRatio < 64
+                        ? subRatioCalculator(secondRatio, 52, 64)
                         : ''
                     }%`,
                   }}
@@ -158,8 +158,8 @@ export default function Home() {
                         : ''
                     }%`,
                     opacity: `${
-                      windowSize < 768 && secondRatio >= 70 && secondRatio < 82
-                        ? ((secondRatio - 70) / 12) * 100
+                      windowSize < 768 && secondRatio < 82
+                        ? subRatioCalculator(secondRatio, 70, 82)
                         : ''
                     }%`,
                   }}
