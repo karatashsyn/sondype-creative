@@ -1,42 +1,24 @@
 import React, { useEffect, useState } from 'react'
 
-export default function useIntersectionRatio({
-  secondSectionRef,
-  thirdSectionRef,
-  fourthSectionRef,
-}) {
-  const [secondRatio, setSecondRatio] = useState(0)
-  const [thirdRatio, setThirdRatio] = useState(0)
-  const [fourthRatio, setFourthRatio] = useState(0)
+export default function useIntersectionRatio(sectionRef) {
+  const [ratio, setRatio] = useState(0)
 
   useEffect(() => {
-    const arrangeIntersectionRatios = () => {
+    const handleRatio = () => {
       const scrollBottom = window.scrollY + window.innerHeight
 
-      const secondResult =
-        ((scrollBottom - secondSectionRef.current.offsetTop) /
-          secondSectionRef.current.offsetHeight) *
+      const result =
+        ((scrollBottom - sectionRef.current.offsetTop) /
+          sectionRef.current.offsetHeight) *
         100
 
-      const thirdResult =
-        ((scrollBottom - thirdSectionRef.current.offsetTop) /
-          thirdSectionRef.current.offsetHeight) *
-        100
-
-      const fourthResult =
-        ((scrollBottom - fourthSectionRef.current.offsetTop) /
-          fourthSectionRef.current.offsetHeight) *
-        100
-
-      setSecondRatio(secondResult >= 0 ? secondResult.toFixed(3) : 0)
-      setThirdRatio(thirdResult >= 0 ? thirdResult.toFixed(3) : 0)
-      setFourthRatio(fourthResult >= 0 ? fourthResult.toFixed(3) : 0)
+      setRatio(result >= 0 ? result.toFixed(3) : 0)
     }
 
-    window.addEventListener('scroll', arrangeIntersectionRatios)
+    window.addEventListener('scroll', handleRatio)
 
-    return () => window.removeEventListener('scroll', arrangeIntersectionRatios)
-  }, [secondSectionRef, thirdSectionRef, fourthSectionRef])
+    return () => window.removeEventListener('scroll', handleRatio)
+  }, [sectionRef])
 
-  return { secondRatio, thirdRatio, fourthRatio }
+  return ratio
 }

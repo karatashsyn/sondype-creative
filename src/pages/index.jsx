@@ -14,11 +14,9 @@ export default function Home() {
   const thirdSectionRef = useRef(null)
   const fourthSectionRef = useRef(null)
   const { windowSize } = useWindow()
-  const { secondRatio, thirdRatio, fourthRatio } = useIntersectionRatio({
-    secondSectionRef,
-    thirdSectionRef,
-    fourthSectionRef,
-  })
+  const secondRatio = useIntersectionRatio(secondSectionRef)
+  const thirdRatio = useIntersectionRatio(thirdSectionRef)
+  const fourthRatio = useIntersectionRatio(fourthSectionRef)
 
   //Second Section Effects
   //0-38 Gozu scale et
@@ -29,70 +27,6 @@ export default function Home() {
   //82-100 sagdaki kucuk span
   //100-112 Transition
 
-  useEffect(() => {
-    const eyeContainer = secondSectionRef.current.querySelector('.eyeContainer')
-
-    const leftContainer =
-      secondSectionRef.current.querySelector('.leftContainer')
-
-    const leftSpan = secondSectionRef.current.querySelector('.leftSpan')
-    const rightContainer =
-      secondSectionRef.current.querySelector('.rightContainer')
-    const rightSpan = secondSectionRef.current.querySelector('.rightSpan')
-
-    if (secondRatio >= 0 && secondRatio < 38) {
-      eyeContainer.style = 'scale:' + (+secondRatio + 20) + '%;'
-    }
-    if (secondRatio >= 52 && secondRatio < 64) {
-      let eyeStyle = `scale: ${110 - +secondRatio}%;`
-      if (windowSize > 760) {
-        eyeStyle += ` transform:translateX(${52 - +secondRatio * 1.2}px); `
-      }
-      eyeContainer.style = eyeStyle
-
-      let leftContainerStyle
-      if (windowSize > 760) {
-        leftContainerStyle =
-          'bottom:' + -(50 - ((+secondRatio - 52) / 12) * 80).toFixed(2) + '%;'
-      } else {
-        leftContainerStyle = `opacity:${(
-          ((secondRatio - 52) / 12) *
-          100
-        ).toFixed(1)}%;`
-      }
-
-      leftContainer.style = leftContainerStyle
-    }
-    if (secondRatio >= 64 && secondRatio < 70) {
-      let leftSpanStyle = 'opacity:' + ((+secondRatio - 64) / 6) * 100 + '%;'
-      leftSpan.style = leftSpanStyle
-    }
-    if (secondRatio >= 70 && secondRatio < 82) {
-      let rightContainerStyle
-
-      if (windowSize > 760) {
-        rightContainerStyle =
-          'bottom:' + -(50 - ((+secondRatio - 70) / 12) * 80).toFixed(2) + '%;'
-      } else {
-        rightContainerStyle = ` opacity:${(
-          ((secondRatio - 70) / 12) *
-          100
-        ).toFixed(1)}%;`
-      }
-      rightContainer.style = rightContainerStyle
-    }
-    if (secondRatio >= 82 && secondRatio < 100) {
-      const subRatio = ((+secondRatio - 82) / 18) * 100
-      let rightSpanStyle = 'opacity:' + subRatio + '%;'
-      rightSpan.style = rightSpanStyle
-    }
-
-    if (secondRatio >= 100 && secondRatio < 124) {
-      const subRatio = ((+secondRatio - 100) / 24) * 100
-      secondSectionRef.current.style = `opacity:${84 - subRatio}%;`
-    }
-  }, [secondRatio, windowSize])
-
   //Third Section Effects
   //0-25 Bekle
   //12-48 Tv kuculterek soldaki yaziyi getir
@@ -100,42 +34,6 @@ export default function Home() {
   //58-94 Sagdaki yaziyi getir
   //94-100 Bekle
   //100-112 Transition
-
-  useEffect(() => {
-    const leftSpan = thirdSectionRef.current.querySelector('.leftContainer')
-    const tvContainer = thirdSectionRef.current.querySelector('.tvContainer')
-    const rightSpan = thirdSectionRef.current.querySelector('.rightContainer')
-
-    if (thirdRatio >= 25 && thirdRatio < 52) {
-      const subRatio = subRatioCalculator(thirdRatio, 25, 52)
-
-      let tvContainerStyle = 'scale:' + (100 - +subRatio / 2).toFixed(1) + '%;'
-      let leftSpanStyle = 'opacity:' + (+subRatio).toFixed(1) + '%;'
-      tvContainer.style = tvContainerStyle
-      leftSpan.style = leftSpanStyle
-    }
-
-    if (thirdRatio >= 58 && thirdRatio < 95) {
-      const subRatio = subRatioCalculator(thirdRatio, 58, 95)
-      let rightSpanStyle = 'opacity:' + (+subRatio).toFixed(1) + '%;'
-      rightSpan.style = rightSpanStyle
-    }
-
-    if (thirdRatio >= 100 && thirdRatio < 125) {
-      const subRatio = subRatioCalculator(thirdRatio, 100, 125).toFixed(1)
-      thirdSectionRef.current.style = 'opacity:' + (100 - subRatio * 2) + '%;'
-    }
-  }, [thirdRatio])
-
-  useEffect(() => {
-    const mofifContainer =
-      fourthSectionRef.current.querySelector('.motifContainer')
-    if (fourthRatio >= 52) {
-      mofifContainer.style = 'transform:translateY(-50%); scale:50%'
-    } else {
-      mofifContainer.style = 'transform:none;scale:1;'
-    }
-  }, [fourthRatio])
 
   return (
     <RootLayout myVar={'Hello'}>
@@ -163,7 +61,18 @@ export default function Home() {
           </div>
         </CustomContainer>
       </section>
-      <section ref={secondSectionRef} className="second h-[400vh]">
+
+      <section
+        ref={secondSectionRef}
+        className="second h-[400vh]"
+        style={{
+          opacity: `${
+            secondRatio >= 100 && secondRatio < 124
+              ? 84 - subRatioCalculator(secondRatio, 100, 124)
+              : ''
+          }%`,
+        }}
+      >
         <div
           className={`flex w-[100%] h-full justify-center  md:px-16 sm:px-8 px-4  ${
             secondRatio >= 95 ? ' fixedContainer' : ''
@@ -179,34 +88,99 @@ export default function Home() {
               <div className="w-full h-full flex justify-center md:flex-row max-md:flex-col max-md:justify-center items-center">
                 <div
                   className={`leftContainer absolute max-md:top-[96px] md:bottom-[-100%] md:left-0 max-md:left-6  max-md:opacity-0 `}
+                  style={{
+                    bottom: `${
+                      windowSize >= 768 && secondRatio >= 52 && secondRatio < 64
+                        ? +-(50 - ((+secondRatio - 52) / 12) * 80).toFixed(2)
+                        : ''
+                    }%`,
+                    opacity: `${
+                      windowSize < 768 && secondRatio >= 52 && secondRatio < 64
+                        ? ((secondRatio - 52) / 12) * 100
+                        : ''
+                    }%`,
+                  }}
                 >
                   <h3 className="xl:text-[96px] lg:text-[72px] md:text-[58px] text-[40px] leading-none">
                     Başarının <br />
                     anahtarı
                   </h3>
-                  <div className="leftSpan w-full text-center mt-2 opacity-0 ">
+                  <div
+                    className="leftSpan w-full text-center mt-2 opacity-0 "
+                    style={{
+                      opacity: `${
+                        secondRatio >= 64 && secondRatio < 70
+                          ? ((+secondRatio - 64) / 6) * 100
+                          : ''
+                      }%`,
+                    }}
+                  >
                     <span className={`${gravitasOne.className}`}>“</span>
                     <span>Bilinen Gerçekler</span>
                     <span className={gravitasOne.className}>”</span>
                   </div>
                 </div>
 
-                <div className="eyeContainer flex justify-center  transition-transform duration-[1s] fade-in ">
+                <div
+                  className="eyeContainer flex justify-center  transition-transform duration-[1s] fade-in "
+                  style={{
+                    scale: `${
+                      secondRatio < 38
+                        ? +secondRatio + 20
+                        : secondRatio >= 38 && secondRatio < 52
+                        ? 58
+                        : secondRatio >= 52 && secondRatio <= 64
+                        ? 110 - +secondRatio
+                        : 46
+                    }%`,
+                    transform: `translateX(${
+                      windowSize > 768 && secondRatio >= 52 ? -56 : 0
+                    }px)`,
+                    opacity: `${
+                      windowSize <= 768 && secondRatio < 64
+                        ? subRatioCalculator(secondRatio, 52, 64)
+                        : 1
+                    }%`,
+                  }}
+                >
                   <Image
                     className={`eyeImage lg:w-[600px] md:w-[280px]`}
                     src={'/eye.png'}
-                    width={windowSize > 760 ? 800 : 240}
-                    height={windowSize > 760 ? 800 : 240}
+                    width={windowSize > 768 ? 800 : 240}
+                    height={windowSize > 768 ? 800 : 240}
                     alt="Eye Image"
                   />
                 </div>
 
-                <div className="rightContainer absolute max-md:bottom-[52px] md:right-0 max-md:right-6 md:bottom-[-100%] max-md:opacity-0 ">
+                <div
+                  className="rightContainer absolute max-md:bottom-[52px] md:right-0 max-md:right-6 md:bottom-[-100%] max-md:opacity-0 "
+                  style={{
+                    bottom: `${
+                      windowSize >= 768 && secondRatio >= 70 && secondRatio < 82
+                        ? +-(50 - ((+secondRatio - 70) / 12) * 80).toFixed(2)
+                        : ''
+                    }%`,
+                    opacity: `${
+                      windowSize < 768 && secondRatio >= 70 && secondRatio < 82
+                        ? ((secondRatio - 70) / 12) * 100
+                        : ''
+                    }%`,
+                  }}
+                >
                   <h3 className=" xl:text-[90px] lg:text-[72px] md:text-[58px] text-[40px] leading-none ">
                     İnsanların <br />
                     Bakışları
                   </h3>
-                  <div className="rightSpan w-full text-center mt-2 opacity-0">
+                  <div
+                    className="rightSpan w-full text-center mt-2 opacity-0"
+                    style={{
+                      opacity: `${
+                        secondRatio >= 82 && secondRatio < 100
+                          ? ((+secondRatio - 82) / 18) * 100
+                          : ''
+                      }%`,
+                    }}
+                  >
                     <span className={`${gravitasOne.className} `}>“</span>
                     <span>görülemeyen algılar</span>
                     <span className={gravitasOne.className}>”</span>
@@ -217,7 +191,14 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section ref={thirdSectionRef} className="h-[400vh] third ">
+
+      <section
+        ref={thirdSectionRef}
+        className="h-[400vh] third "
+        style={{
+          opacity: `${100 - subRatioCalculator(thirdRatio, 100, 125) * 2}%`,
+        }}
+      >
         <div
           className={`flex w-[100%] h-full justify-center  md:px-16 sm:px-8 px-4  ${
             thirdRatio >= 90 ? ' fixedContainer' : ''
@@ -227,13 +208,29 @@ export default function Home() {
             {' '}
             <div className="sticky top-0 h-[100vh]">
               <div className=" h-full flex max-md:flex-col  max-md:justify-center max-md:gap-2 justify-between items-center ">
-                <div className="leftContainer xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0">
+                <div
+                  className="leftContainer xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0"
+                  style={{
+                    opacity: `${subRatioCalculator(thirdRatio, 25, 52)}%`,
+                  }}
+                >
                   <span className="line-through">Eskimek</span> <br />
                   <span className="underline">eskiye</span> göre <br />{' '}
                   <span>daha kolay.</span>
                 </div>
 
-                <div className="tvContainer">
+                <div
+                  style={{
+                    scale: `${
+                      subRatioCalculator(thirdRatio, 25, 52) <= 100
+                        ? (
+                            100 -
+                            subRatioCalculator(thirdRatio, 25, 52) / 2
+                          ).toFixed(1)
+                        : 50
+                    }%`,
+                  }}
+                >
                   <Image
                     className="tvImage"
                     src={'/tv.png'}
@@ -242,7 +239,12 @@ export default function Home() {
                     alt="Tv Image"
                   />
                 </div>
-                <div className="rightContainer text-end xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0">
+                <div
+                  className="rightContainer text-end xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0"
+                  style={{
+                    opacity: `${subRatioCalculator(thirdRatio, 58, 95)}%`,
+                  }}
+                >
                   <span className="">Çağı Yakala</span> <br />
                   <span className="">Geride Kalma.</span>
                 </div>
@@ -251,11 +253,15 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section ref={fourthSectionRef} className="h-[150vh] fourth ">
+      <section ref={fourthSectionRef} className="h-[15s0vh] fourth ">
         <CustomContainer>
           <div className="w-full h-[75vh] flex items-start justify-center sticky top-[25vh]">
             <div className="h-[75vh] w-full  flex justify-center items-start relative ">
-              <div className="motifContainer relative transition-all duration-1000">
+              <div
+                className={`motifContainer relative transition-all duration-700 ${
+                  fourthRatio >= 52 ? '-translate-y-[30%] scale-50' : ''
+                }`}
+              >
                 <Image
                   width={900}
                   height={900}
