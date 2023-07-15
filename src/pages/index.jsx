@@ -31,9 +31,7 @@ export default function Home() {
 
   return (
     <RootLayout myVar={'Hello'}>
-      <section
-        className={`h-[100vh] first pt-48 min-h-max fade-in bg-red-400 `}
-      >
+      <section className={`h-[100vh] first pt-48 min-h-max fade-in `}>
         <CustomContainer className="maincontainer">
           <div>
             <h1 className="lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none .gilroyExtraBold">
