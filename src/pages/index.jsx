@@ -24,9 +24,9 @@ export default function Home() {
   const fourthRatio = useIntersectionRatio(fourthSectionRef)
 
   //Second Section Effects
-  //0-38 Gozu scale et, 38-52 Bekle, 52-64 kuculterek sola kaydir ve soldaki buyuk span gelsin,
-  //64-70 soldaki kucuk span, 70-82 sagdaki buyuk span, 82-100 sagdaki kucuk span
-  //100-112 Transition
+  //0-38 Gozu scale et, 38-42 Bekle, 42-54 kuculterek sola kaydir ve soldaki buyuk span gelsin,
+  //54-60 soldaki kucuk span, 60-72 sagdaki buyuk span, 72-90 sagdaki kucuk span
+  //94-112 Transition
 
   //Third Section Effects, 0-25 Bekle, 12-48 Tv kuculterek soldaki yaziyi getir
   //48-58 Bekle, 58-94 Sagdaki yaziyi getir, 94-100 Bekle
@@ -61,11 +61,11 @@ export default function Home() {
 
       <section
         ref={secondSectionRef}
-        className="second h-[400vh]"
+        className="second h-[300vh]"
         style={{
           opacity: `${
-            secondRatio >= 100 && secondRatio < 124
-              ? 84 - subRatioCalculator(secondRatio, 100, 124)
+            secondRatio >= 90 && secondRatio < 124
+              ? 92 - subRatioCalculator(secondRatio, 90, 124)
               : ''
           }%`,
         }}
@@ -77,23 +77,28 @@ export default function Home() {
         >
           <div
             className={`w-[100%] h-full max-w-6xl ${
-              secondRatio >= 100 && secondRatio < 112 ? 'relative' : ''
+              secondRatio >= 90 && secondRatio < 112 ? 'relative' : ''
             }`}
           >
             {' '}
             <div className={`w-full h-[100vh] sticky top-0`}>
               <div className="w-full h-full flex justify-center md:flex-row max-md:flex-col max-md:justify-center items-center">
                 <div
-                  className={`leftContainer absolute max-md:top-[96px] md:bottom-[-100%] md:left-0 max-md:left-6  max-md:opacity-0 `}
+                  className={`leftContainer absolute max-md:top-[96px] transition-transform duration-0 md:translate-y-[100vh]  md:left-0 max-md:left-6  max-md:opacity-0 `}
                   style={{
-                    bottom: `${
-                      windowSize >= 768 && secondRatio >= 52 && secondRatio < 64
-                        ? +-(50 - ((+secondRatio - 52) / 12) * 80).toFixed(2)
+                    transform: `translate(0,${
+                      windowSize >= 768 && secondRatio >= 42 && secondRatio < 54
+                        ? +(
+                            100 - subRatioCalculator(secondRatio, 42, 54)
+                          ).toFixed(4)
+                        : windowSize >= 768 && secondRatio >= 54
+                        ? 0
                         : ''
-                    }%`,
+                    }vh)`,
+                    transitionDuration: `${secondRatio >= 54 ? '2s' : '0s'}`,
                     opacity: `${
-                      windowSize < 768 && secondRatio < 64
-                        ? subRatioCalculator(secondRatio, 52, 64)
+                      windowSize < 768 && secondRatio < 54
+                        ? subRatioCalculator(secondRatio, 42, 54)
                         : '100'
                     }%`,
                   }}
@@ -106,8 +111,8 @@ export default function Home() {
                     className="leftSpan w-full text-center mt-2 opacity-0 "
                     style={{
                       opacity: `${
-                        secondRatio >= 64 && secondRatio < 70
-                          ? ((+secondRatio - 64) / 6) * 100
+                        secondRatio >= 54 && secondRatio < 60
+                          ? ((+secondRatio - 54) / 6) * 100
                           : ''
                       }%`,
                     }}
@@ -124,18 +129,18 @@ export default function Home() {
                     scale: `${
                       secondRatio < 38
                         ? +secondRatio + 20
-                        : secondRatio >= 38 && secondRatio < 52
+                        : secondRatio >= 38 && secondRatio < 42
                         ? 58
-                        : secondRatio >= 52 && secondRatio <= 64
-                        ? 110 - +secondRatio
+                        : secondRatio >= 42 && secondRatio <= 54
+                        ? 100 - +secondRatio
                         : 46
                     }%`,
                     transform: `translateX(${
-                      windowSize > 768 && secondRatio >= 52 ? -56 : 0
+                      windowSize > 768 && secondRatio >= 42 ? -56 : 0
                     }px)`,
                     opacity: `${
-                      windowSize <= 768 && secondRatio < 64
-                        ? subRatioCalculator(secondRatio, 52, 64)
+                      windowSize <= 768 && secondRatio < 54
+                        ? subRatioCalculator(secondRatio, 42, 54)
                         : 1
                     }%`,
                   }}
@@ -150,16 +155,21 @@ export default function Home() {
                 </div>
 
                 <div
-                  className="rightContainer absolute max-md:bottom-[52px] md:right-0 max-md:right-6 md:bottom-[-100%] max-md:opacity-0 "
+                  className="rightContainer absolute max-md:bottom-[52px]  transition-transform duration-0 md:right-0 max-md:right-6 md:translate-y-[100vh] max-md:opacity-0 "
                   style={{
-                    bottom: `${
-                      windowSize >= 768 && secondRatio >= 70 && secondRatio < 82
-                        ? +-(50 - ((+secondRatio - 70) / 12) * 80).toFixed(2)
+                    transform: `translate(0,${
+                      windowSize >= 768 && secondRatio >= 60 && secondRatio < 72
+                        ? +(
+                            100 - subRatioCalculator(secondRatio, 60, 72)
+                          ).toFixed(4)
+                        : windowSize >= 768 && secondRatio >= 72
+                        ? 0
                         : ''
-                    }%`,
+                    }vh)`,
+                    transitionDuration: `${secondRatio >= 72 ? '2s' : '0s'}`,
                     opacity: `${
-                      windowSize < 768 && secondRatio < 82
-                        ? subRatioCalculator(secondRatio, 70, 82)
+                      windowSize < 768 && secondRatio < 72
+                        ? subRatioCalculator(secondRatio, 60, 72)
                         : '100'
                     }%`,
                   }}
@@ -172,8 +182,8 @@ export default function Home() {
                     className="rightSpan w-full text-center mt-2 opacity-0"
                     style={{
                       opacity: `${
-                        secondRatio >= 82 && secondRatio < 100
-                          ? ((+secondRatio - 82) / 18) * 100
+                        secondRatio >= 72 && secondRatio < 90
+                          ? ((+secondRatio - 72) / 18) * 100
                           : ''
                       }%`,
                     }}
