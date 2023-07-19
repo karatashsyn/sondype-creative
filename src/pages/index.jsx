@@ -95,7 +95,7 @@ export default function Home() {
                         ? 0
                         : ''
                     }vh)`,
-                    transitionDuration: `${secondRatio >= 54 ? '2s' : '0s'}`,
+                    transitionDuration: `${secondRatio >= 54 ? '1s' : '0s'}`,
                     opacity: `${
                       windowSize < 768 && secondRatio < 54
                         ? subRatioCalculator(secondRatio, 42, 54)
@@ -166,7 +166,7 @@ export default function Home() {
                         ? 0
                         : ''
                     }vh)`,
-                    transitionDuration: `${secondRatio >= 72 ? '2s' : '0s'}`,
+                    transitionDuration: `${secondRatio >= 72 ? '1s' : '0s'}`,
                     opacity: `${
                       windowSize < 768 && secondRatio < 72
                         ? subRatioCalculator(secondRatio, 60, 72)
