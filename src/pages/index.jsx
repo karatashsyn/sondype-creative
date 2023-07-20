@@ -37,12 +37,14 @@ export default function Home() {
       <section className={`h-[100vh] first pt-48 min-h-max fade-in `}>
         <CustomContainer className="maincontainer">
           <div>
-            <h1 className="lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none .gilroyExtraBold">
-              <span className={`${gravitasOne.className}`}>“</span>
-              Büyük başarılar, küçük detaylarda{' '}
-              <span className="secret">gizlidir</span>.
-              <span className={gravitasOne.className}>”</span>
-            </h1>
+            <div className="w-full max-w ">
+              <h1 className="xl:text-[100px] lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none .gilroyExtraBold">
+                <span className={`${gravitasOne.className}`}>“</span>
+                Büyük başarılar, küçük detaylarda{' '}
+                <span className="secret">gizlidir</span>.
+                <span className={gravitasOne.className}>”</span>
+              </h1>
+            </div>
             <main className="mt-16 md:w-[540px] sm:text-[16px] text-[14px] max-sm:text-center">
               İstanbul’da kurulan{' '}
               <span className="font-extrabold text-[1.18rem] ">
@@ -66,6 +68,8 @@ export default function Home() {
           opacity: `${
             secondRatio >= 90 && secondRatio < 124
               ? 92 - subRatioCalculator(secondRatio, 90, 124)
+              : secondRatio >= 124
+              ? '0'
               : ''
           }%`,
         }}
