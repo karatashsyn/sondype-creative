@@ -4,13 +4,13 @@
 
 @font-face {
   font-family: 'gilroyLight';
-  src: url('./../../fonts/Gilroy-Light.ttf') format('truetype');
+  src: url('/fonts/Gilroy-Light.ttf') format('truetype');
   font-weight: lighter;
   font-style: normal;
 }
 @font-face {
   font-family: 'gilroyRegular';
-  src: url('./../../fonts/Gilroy-Regular.ttf') format('truetype');
+  src: url('/fonts/Gilroy-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -21,21 +21,21 @@
 
 @font-face {
   font-family: 'gilroyBold';
-  src: url('./../../fonts/Gilroy-Bold.ttf') format('truetype');
+  src: url('/fonts/Gilroy-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'gilroyExtraBold';
-  src: url('./../../fonts/Gilroy-ExtraBold.ttf') format('truetype');
+  src: url('/fonts/Gilroy-ExtraBold.ttf') format('truetype');
   font-weight: bolder;
   font-style: normal;
 }
 
 @font-face {
   font-family: 'gilroySemiBold';
-  src: url('./../../fonts/Gilroy-SemiBold.ttf') format('truetype');
+  src: url('/fonts/Gilroy-SemiBold.ttf') format('truetype');
   font-weight: 300;
   font-style: normal;
 }
