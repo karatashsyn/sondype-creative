@@ -10,9 +10,7 @@ import Head from 'next/head'
 export default function RootLayout({ children }) {
   return (
     <>
-      {/* <Head> */}
-      <title>Sondype</title>
-      {/* </Head> */}
+      <Head></Head>
 
       <Navbar />
       <main>{children}</main>

@@ -38,7 +38,7 @@ export default function Home() {
         <CustomContainer className="maincontainer">
           <div>
             <div className="w-full max-w ">
-              <h1 className="xl:text-[100px] lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none .gilroyExtraBold">
+              <h1 className="xl:text-[100px] lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none ">
                 <span className={`${gravitasOne.className}`}>“</span>
                 Büyük başarılar, küçük detaylarda{' '}
                 <span className="secret">gizlidir</span>.

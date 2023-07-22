@@ -12,6 +12,9 @@ export default function Navbar() {
         <SondypeIcon />
       </Link>
       <ul className="flex gap-12 items-center">
+        <Link href={'/'}>
+          <li className="text-[15px]">Anasayfa</li>
+        </Link>
         <Link href={'/contact'}>
           <li className="text-[15px]">İletişim</li>
         </Link>
