@@ -38,16 +38,16 @@ export default function Home() {
         <CustomContainer className="maincontainer">
           <div>
             <div className="w-full max-w ">
-              <h1 className="xl:text-[100px] lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none ">
+              <h1 className="xl:text-[100px] lg:text-[6.2vw] md:text-start text-center md:text-6xl text-5xl leading-none gilroyBold">
                 <span className={`${gravitasOne.className}`}>“</span>
                 Büyük başarılar, küçük detaylarda{' '}
-                <span className="secret">gizlidir</span>.
+                <span className="secret gilroyBold">gizlidir</span>.
                 <span className={gravitasOne.className}>”</span>
               </h1>
             </div>
             <main className="mt-16 md:w-[540px] sm:text-[16px] text-[14px] max-sm:text-center">
               İstanbul’da kurulan{' '}
-              <span className="font-extrabold text-[1.18rem] ">
+              <span className="text-[1.18rem] gilroyExtraBold ">
                 {' '}
                 Sondype Creative
               </span>
@@ -107,7 +107,7 @@ export default function Home() {
                     }%`,
                   }}
                 >
-                  <h3 className="xl:text-[96px] lg:text-[72px] md:text-[58px] text-[40px] leading-none">
+                  <h3 className="xl:text-[96px] lg:text-[72px] md:text-[58px] text-[40px] leading-none gilroySemiBold">
                     Başarının <br />
                     anahtarı
                   </h3>
@@ -178,7 +178,7 @@ export default function Home() {
                     }%`,
                   }}
                 >
-                  <h3 className=" xl:text-[90px] lg:text-[72px] md:text-[58px] text-[40px] leading-none ">
+                  <h3 className=" xl:text-[90px] lg:text-[72px] md:text-[58px] text-[40px] leading-none gilroySemiBold">
                     İnsanların <br />
                     Bakışları
                   </h3>
@@ -220,14 +220,17 @@ export default function Home() {
             <div className="sticky top-0 h-[100vh]">
               <div className=" h-full flex max-md:flex-col  max-md:justify-center max-md:gap-2 justify-between items-center ">
                 <div
-                  className="leftContainer xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0"
+                  className="leftContainer xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0  gilroyBold"
                   style={{
                     opacity: `${subRatioCalculator(thirdRatio, 25, 52)}%`,
                   }}
                 >
-                  <span className="line-through">Eskimek</span> <br />
-                  <span className="underline">eskiye</span> göre <br />{' '}
-                  <span>daha kolay.</span>
+                  <span className="line-through  gilroyBold">Eskimek</span>{' '}
+                  <br />
+                  <span className="underline  gilroyBold">
+                    eskiye
+                  </span> göre <br />{' '}
+                  <span className=" gilroyBold">daha kolay.</span>
                 </div>
 
                 <div
@@ -251,13 +254,13 @@ export default function Home() {
                   />
                 </div>
                 <div
-                  className="rightContainer text-end xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0"
+                  className="rightContainer text-end xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0 gilroyBold"
                   style={{
                     opacity: `${subRatioCalculator(thirdRatio, 58, 95)}%`,
                   }}
                 >
-                  <span className="">Çağı Yakala</span> <br />
-                  <span className="">Geride Kalma.</span>
+                  <span className="gilroyBold">Çağı Yakala</span> <br />
+                  <span className="gilroyBold">Geride Kalma.</span>
                 </div>
               </div>
             </div>

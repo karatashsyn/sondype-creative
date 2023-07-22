@@ -3,14 +3,14 @@
 @tailwind utilities;
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Light.ttf') format('truetype');
+  font-family: 'gilroyLight';
+  src: url('./../../fonts/Gilroy-Light.ttf') format('truetype');
   font-weight: lighter;
   font-style: normal;
 }
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Regular.ttf') format('truetype');
+  font-family: 'gilroyRegular';
+  src: url('./../../fonts/Gilroy-Regular.ttf') format('truetype');
   font-weight: normal;
   font-style: normal;
 }
@@ -20,16 +20,23 @@
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-Bold.ttf') format('truetype');
+  font-family: 'gilroyBold';
+  src: url('./../../fonts/Gilroy-Bold.ttf') format('truetype');
   font-weight: bold;
   font-style: normal;
 }
 
 @font-face {
-  font-family: 'Gilroy';
-  src: url('/fonts/Gilroy-ExtraBold.ttf') format('truetype');
+  font-family: 'gilroyExtraBold';
+  src: url('./../../fonts/Gilroy-ExtraBold.ttf') format('truetype');
   font-weight: bolder;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'gilroySemiBold';
+  src: url('./../../fonts/Gilroy-SemiBold.ttf') format('truetype');
+  font-weight: 300;
   font-style: normal;
 }
 
@@ -38,30 +45,26 @@
   padding: 0;
   box-sizing: border-box;
   color: aliceblue;
-  font-family: 'Gilroy', sans-serif;
-}
-
-section {
+  font-family: 'gilroyRegular', sans-serif;
 }
 
 .gilroyLight {
-  font-family: 'Gilroy', sans-serif;
-  font-weight: lighter !important;
+  font-family: 'gilroyLight', sans-serif;
 }
-
+.gilroySemiBold {
+  font-family: 'gilroySemiBold', sans-serif;
+}
 .gilroyRegular {
-  font-family: 'Gilroy', sans-serif;
-  font-weight: normal !important;
+  font-family: 'gilroyRegular', sans-serif;
 }
-
 .gilroyBold {
-  font-family: 'Gilroy', sans-serif;
-  font-weight: bold !important;
+  font-family: 'gilroyBold', sans-serif;
+}
+.gilroyExtraBold {
+  font-family: 'gilroyExtraBold', sans-serif;
 }
 
-.gilroyExtraBold {
-  font-family: 'Gilroy', sans-serif;
-  font-weight: bolder !important;
+section {
 }
 
 :root {
