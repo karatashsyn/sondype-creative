@@ -33,7 +33,7 @@ export default function Navbar() {
         </div>
       </Link>
       <div
-        className="sm:hidden mr-4 z-50 cursor-pointer"
+        className="sm:hidden z-50 cursor-pointer"
         onClick={() => {
           setIsOpen((val) => !val)
         }}
