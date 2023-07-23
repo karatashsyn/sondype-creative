@@ -42,7 +42,7 @@ export default function Navbar() {
       </div>
       <ul
         className={`flex gap-12 items-center max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:top-0 max-sm:flex-col  duration-200 max-sm:overflow-hidden max-sm:bg-gray-900 z-40 ${
-          isOpen ? 'max-sm:h-[70vh] pt-[80px]' : 'max-sm:h-0'
+          isOpen ? 'max-sm:h-[70vh] max-sm:pt-[80px]' : 'max-sm:h-0'
         }`}
       >
         <Link href={'/'}>
