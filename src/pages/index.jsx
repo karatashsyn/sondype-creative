@@ -1,6 +1,6 @@
 import RootLayout from '@/app/layout'
 import { Gravitas_One } from 'next/font/google'
-import { useRef } from 'react'
+import { useRef, useEffect } from 'react'
 import useIntersectionRatio from '@/hooks/useIntersectionRatio'
 import useWindow from '@/hooks/useWindow'
 import subRatioCalculator from '@/utils/subRatio'
@@ -9,10 +9,6 @@ import CustomContainer from '@/components/UI/CustomContainer'
 import eyeImage from './../../public/eye.png'
 import tvImage from './../../public/tv.png'
 import motifImage from './../../public/motif.png'
-// import FirstLanding from '@/views/landingPage/firstLanding'
-// import SecondLanding from '@/views/landingPage/secondLanding'
-// import ThirdLanding from '@/views/landingPage/thirdLanding'
-// import FourthLanding from '@/views/landingPage/fourthLanding'
 const gravitasOne = Gravitas_One({ subsets: ['latin'], weight: '400' })
 export default function Home() {
   const secondSectionRef = useRef(null)
@@ -267,22 +263,22 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section ref={fourthSectionRef} className="h-[15s0vh] fourth ">
+      <section ref={fourthSectionRef} className="h-[70vh] fourth ">
         <CustomContainer>
           <div className="w-full h-[75vh] flex items-start justify-center sticky top-[25vh]">
-            <div className="h-[75vh] w-full  flex justify-center items-start relative ">
+            <div className="h-[75vh] w-full flex justify-center items-start ">
               <div
-                className={`motifContainer relative transition-all duration-700 ${
-                  fourthRatio >= 52 ? '-translate-y-[30%] scale-50' : ''
+                className={`h-full motifContainer transition-all duration-700 relative ${
+                  fourthRatio >= 90 ? '-translate-y-[10%] scale-50' : ''
                 }`}
               >
                 <Image width={900} height={900} src={motifImage} alt="Motif" />
-                <div
-                  className={`w-[100%] flex justify-center fixed  transition-all duration-1000  ${
-                    fourthRatio >= 52 ? 'bottom-[-60%]' : 'bottom-[-200vh]'
-                  }`}
-                >
-                  <a href="#" className={`text-center text-[48px]`}>
+                <div className={`w-[100%] flex justify-center  mt-12  `}>
+                  <a
+                    href="#"
+                    className={`text-center text-[48px]  transition-all delay-500 absolute duration-1000
+                       ${fourthRatio >= 90 ? 'opacity-1' : 'opacity-0'}`}
+                  >
                     info@sondype.com
                   </a>
                 </div>

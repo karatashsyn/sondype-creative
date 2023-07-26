@@ -9,5 +9,5 @@ export default function useGetBlogs() {
     })
   }, [])
 
-  return blogs
+  return blogs.slice(0, 4)
 }

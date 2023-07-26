@@ -1,6 +1,7 @@
 import { Inter } from 'next/font/google'
 import Navbar from '@/components/layout/Navbar'
 import Head from 'next/head'
+import Footer from '@/components/layout/Footer'
 
 // export const metadata = {
 //   title: 'Create Next App',
@@ -10,10 +11,14 @@ import Head from 'next/head'
 export default function RootLayout({ children }) {
   return (
     <>
-      <Head></Head>
-
+      <Head>
+        <title>Sondype Creative</title>
+      </Head>
       <Navbar />
-      <main>{children}</main>
+      <div className="flex flex-col justify-between min-h-[100vh]">
+        <main>{children}</main>
+        <Footer />
+      </div>
     </>
   )
 }

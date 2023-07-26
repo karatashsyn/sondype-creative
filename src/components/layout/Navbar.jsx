@@ -8,7 +8,6 @@ export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const { windowSize } = useWindow()
   useEffect(() => {
-    console.log(windowSize)
     if (windowSize > 768) {
       setIsOpen(false)
     }
