@@ -88,9 +88,14 @@ body {
   animation-iteration-count: 1;
 }
 
+.activeLink {
+  text-decoration: underline;
+}
+
 .fixedContainer {
   position: fixed;
-  width: 100vw;
+  left: 0;
+  right: 0;
   bottom: 0;
 }
 
