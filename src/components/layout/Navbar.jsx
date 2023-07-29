@@ -1,15 +1,12 @@
 import React, { use, useEffect, useMemo, useState } from 'react'
 import SondypeIcon from '../UI/Icons/SondypeIcon'
 import Link from 'next/link'
-import MainButton from '../UI/Buttons/MainButton'
 import HamburgerMenu from '../UI/Icons/HamburgerIcon'
 import useWindow from '@/hooks/useWindow'
-import { useRouter } from 'next/router'
+import NavLink from '../UI/Links/NavLink'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const { windowSize } = useWindow()
-  const { pathname } = useRouter()
-  const currentPath = useMemo(() => pathname.split('/')[1], [pathname])
 
   useEffect(() => {
     if (windowSize > 768) {
@@ -47,43 +44,10 @@ export default function Navbar() {
           isOpen ? 'max-sm:h-[70vh] max-sm:pt-[80px]' : 'max-sm:h-0'
         }`}
       >
-        <Link href={'/'}>
-          <li
-            className={`text-[15px] max-sm:font-bold  ${
-              !currentPath.length ? 'activeLink' : ''
-            }`}
-          >
-            Anasayfa
-          </li>
-        </Link>
-        <Link href={'/contact'}>
-          <li
-            className={`text-[15px] max-sm:font-bold  ${
-              currentPath === 'contact' ? 'activeLink' : ''
-            }`}
-          >
-            İletişim
-          </li>
-        </Link>
-
-        <Link href={'/aboutUs'}>
-          <li
-            className={`text-[15px] max-sm:font-bold  ${
-              currentPath === 'aboutUs' ? 'activeLink' : ''
-            }`}
-          >
-            Hakkımızda
-          </li>
-        </Link>
-        <Link href={'/blog'}>
-          <li
-            className={`text-[15px] max-sm:font-bold  ${
-              currentPath === 'blog' ? 'activeLink' : ''
-            }`}
-          >
-            Blog
-          </li>
-        </Link>
+        <NavLink name="Anasayfa" to="" />
+        <NavLink name="Hakkımızda" to="aboutUs" />
+        <NavLink name="Blog" to="blog" />
+        <NavLink name="İletişim" to="contact" />
       </ul>
     </nav>
   )

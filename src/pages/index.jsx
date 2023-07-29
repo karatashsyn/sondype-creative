@@ -151,6 +151,7 @@ export default function Home() {
                     width={windowSize > 768 ? 800 : 240}
                     height={windowSize > 768 ? 800 : 240}
                     alt="Eye Image"
+                    loading="eager"
                   />
                 </div>
 
@@ -247,6 +248,7 @@ export default function Home() {
                     width={420}
                     height={300}
                     alt="Tv Image"
+                    loading="eager"
                   />
                 </div>
                 <div
@@ -272,7 +274,13 @@ export default function Home() {
                   fourthRatio >= 90 ? '-translate-y-[10%] scale-50' : ''
                 }`}
               >
-                <Image width={900} height={900} src={motifImage} alt="Motif" />
+                <Image
+                  width={900}
+                  height={900}
+                  src={motifImage}
+                  alt="Motif"
+                  loading="eager"
+                />
                 <div className={`w-[100%] flex justify-center  mt-12  `}>
                   <a
                     href="#"

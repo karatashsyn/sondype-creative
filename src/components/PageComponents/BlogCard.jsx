@@ -1,14 +1,22 @@
-import React from 'react'
+import React, { use, useEffect } from 'react'
 import Image from 'next/image'
+import { useRouter } from 'next/router'
+import useWindow from '@/hooks/useWindow'
 export default function BlogCard({ blog }) {
+  const router = useRouter()
+
   return (
-    <div className="p-2 flex flex-col justify-between max-w-[400px] h-[432px] cursor-pointer bg-gray-950 hover:bg-gray-900 transition-colors duration-200 rounded-[5px] ">
+    <div
+      className={`p-2 flex flex-col justify-between mx-auto w-full max-w-[360px] h-[432px] cursor-pointer bg-gray-950 transition-colors duration-200 rounded-[5px] fade-in-down`}
+      onClick={() => router.push(`/blog/${blog.slug}`)}
+    >
       <div>
         {/*  eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="w-full h-[220px] object-cover mb-[25px] rounded-[5px]"
           src={blog.img}
           alt="Blog Image"
+          loading="lazy"
         />
         <div className="h-[72px] ">
           <h1 className="text-[28px] max-sm:text-[24px] font-medium leading-none">

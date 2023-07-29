@@ -64,12 +64,6 @@
   font-family: 'gilroyExtraBold', sans-serif;
 }
 
-section {
-}
-
-:root {
-}
-
 body {
   background-color: #000;
 }
@@ -87,6 +81,12 @@ body {
   animation-duration: 2s;
   animation-iteration-count: 1;
 }
+.fade-in-down {
+  animation-name: fade-in-down;
+  animation-fill-mode: forwards;
+  animation-duration: 700ms;
+  animation-iteration-count: 1;
+}
 
 .activeLink {
   text-decoration: underline;
@@ -97,6 +97,40 @@ body {
   left: 0;
   right: 0;
   bottom: 0;
+}
+
+.article-content {
+  /* make text container's text flow polygon  */
+  /* shape-outside: circle(50% at 50% 50%); */
+}
+
+body::-webkit-scrollbar {
+  width: 4px;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #e8e8e8;
+  border-radius: 4px;
+}
+
+body {
+  scrollbar-width: thin;
+  scrollbar-color: black;
+}
+
+body::-webkit-scrollbar-thumb {
+  background-color: #e8e8e8;
+}
+
+@keyframes fade-in-down {
+  0% {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
 
 @keyframes fade-in {
