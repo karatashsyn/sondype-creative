@@ -8,8 +8,8 @@ export default function useIntersectionRatio(sectionRef) {
       const scrollBottom = window.scrollY + window.innerHeight
 
       const result =
-        ((scrollBottom - sectionRef.current.offsetTop) /
-          sectionRef.current.offsetHeight) *
+        ((scrollBottom - sectionRef?.current?.offsetTop) /
+          sectionRef.current?.offsetHeight) *
         100
 
       setRatio(result >= 0 ? result.toFixed(3) : 0)

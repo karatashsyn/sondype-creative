@@ -271,7 +271,7 @@ export default function Home() {
             <div className="h-[75vh] w-full flex justify-center items-start ">
               <div
                 className={`h-full motifContainer transition-all duration-700 relative ${
-                  fourthRatio >= 90 ? '-translate-y-[10%] scale-50' : ''
+                  fourthRatio >= 90 ? 'scale-50' : ''
                 }`}
               >
                 <Image

@@ -7,14 +7,14 @@ export default function BlogCard({ blog }) {
 
   return (
     <div
-      className={`p-2 flex flex-col justify-between mx-auto w-full max-w-[360px] h-[432px] cursor-pointer bg-gray-950 transition-colors duration-200 rounded-[5px] fade-in-down`}
+      className={`p-2 flex flex-col justify-between mx-auto w-full max-w-[360px] h-[432px] cursor-pointer bg-gray-950 transition-colors duration-200 rounded-[5px] fade-in-fast`}
       onClick={() => router.push(`/blog/${blog.slug}`)}
     >
       <div>
         {/*  eslint-disable-next-line @next/next/no-img-element */}
         <img
           className="w-full h-[220px] object-cover mb-[25px] rounded-[5px]"
-          src={blog.img}
+          src={blog.thumbnail}
           alt="Blog Image"
           loading="lazy"
         />

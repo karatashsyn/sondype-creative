@@ -8,8 +8,10 @@ export default function NavLink({ name, to }) {
   return (
     <Link href={'/' + to}>
       <li
-        className={`text-[15px] max-sm:font-bold ${
-          currentPath === to ? 'underline' : ''
+        className={`text-[15px] max-sm:font-bold  ${
+          currentPath === to
+            ? 'font-extrabold !text-white underline underline-offset-2'
+            : ''
         }`}
       >
         {name}

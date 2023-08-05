@@ -45,9 +45,11 @@ export default function Navbar() {
         }`}
       >
         <NavLink name="Anasayfa" to="" />
-        <NavLink name="Hakkımızda" to="aboutUs" />
-        <NavLink name="Blog" to="blog" />
         <NavLink name="İletişim" to="contact" />
+        <div className="pointer-events-none cursor-not-allowed">
+          <NavLink name="Hakkımızda" to="aboutUs" />
+        </div>
+        <NavLink name="Blog" to="blog" />
       </ul>
     </nav>
   )

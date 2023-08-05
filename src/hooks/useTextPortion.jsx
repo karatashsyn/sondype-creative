@@ -6,17 +6,17 @@ export default function useTextDivider() {
 
   useEffect(() => {
     if (windowSize > 1460) {
-      setFirstPortion(140)
+      setFirstPortion(126)
     } else if (windowSize > 1380) {
-      setFirstPortion(128)
+      setFirstPortion(114)
     } else if (windowSize > 1260) {
-      setFirstPortion(120)
+      setFirstPortion(106)
     } else if (windowSize > 1128) {
-      setFirstPortion(100)
+      setFirstPortion(86)
     } else if (windowSize > 820) {
-      setFirstPortion(76)
-    } else if (windowSize > 768) {
       setFirstPortion(64)
+    } else if (windowSize > 768) {
+      setFirstPortion(50)
     }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps

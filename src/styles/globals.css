@@ -75,6 +75,13 @@ body {
   color: transparent;
 }
 
+.fade-in-fast {
+  animation-name: fade-in;
+  animation-fill-mode: forwards;
+  animation-duration: 800ms;
+  animation-iteration-count: 1;
+}
+
 .fade-in {
   animation-name: fade-in;
   animation-fill-mode: forwards;
@@ -99,9 +106,21 @@ body {
   bottom: 0;
 }
 
-.article-content {
-  /* make text container's text flow polygon  */
-  /* shape-outside: circle(50% at 50% 50%); */
+.right-image-container {
+  width: calc(36% - 32px) !important;
+}
+
+.right-img {
+  max-width: calc(36% - 32px) !important;
+  margin-left: 32px;
+  margin-bottom: 32px;
+}
+
+.right-box {
+  width: calc(36% - 32px) !important;
+  margin-left: 32px;
+  margin-bottom: 32px;
+  height: 320px;
 }
 
 body::-webkit-scrollbar {
@@ -120,6 +139,22 @@ body {
 
 body::-webkit-scrollbar-thumb {
   background-color: #e8e8e8;
+}
+
+.loading {
+  animation-name: loading;
+  animation-duration: 1s;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+
+@keyframes loading {
+  0% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.2;
+  }
 }
 
 @keyframes fade-in-down {

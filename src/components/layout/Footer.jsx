@@ -5,7 +5,7 @@ import LinkedinIcon from '../UI/Icons/LinkedinIcon'
 
 export default function Footer() {
   return (
-    <div className="w-full w-max-[100%] py-4">
+    <div className="w-full w-max-[100%] py-4 mt-32">
       <div className="flex flex-col gap">
         <div className="text-center w-full flex gap-5 justify-center items-center">
           <InstagramIcon />
