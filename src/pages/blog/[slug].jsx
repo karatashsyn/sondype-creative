@@ -13,6 +13,9 @@ export default function Index() {
   const { firstPortion } = useTextPortion()
   const { blog, loading } = useGetBlog(slug)
   const { windowSize } = useWindow()
+  useEffect(() => {
+    console.log(firstPortion)
+  }, [firstPortion])
   return (
     <RootLayout>
       <MainContainer>
@@ -24,7 +27,7 @@ export default function Index() {
                 <div className="w-1/2 h-8 bg-[rgb(36,36,36)] loading"></div>
               </div>
             ) : (
-              <h1 className=" text-[32px] lg:hidden font-bold leading-none">
+              <h1 className=" text-[32px] lg:hidden font-bold leading-none fade-in-fast">
                 {blog?.title}
               </h1>
             )}
@@ -59,7 +62,7 @@ export default function Index() {
                 </>
               ) : (
                 <>
-                  <h1 className=" text-[32px] max-lg:hidden font-bold leading-none">
+                  <h1 className=" text-[32px] max-lg:hidden font-bold leading-none fade-in-fast">
                     {blog?.title}
                   </h1>
                   <article className="max-lg:hidden fade-in-fast">
@@ -86,26 +89,26 @@ export default function Index() {
 
             <div className=" justify-between py-1 max-sm:text-center">
               {loading ? (
+                <div className="flex flex-col gap-2">
+                  <LoadingBar />
+                  <LoadingBar />
+                  <LoadingBar />
+                  <LoadingBar />
+                  <LoadingBar />
+                  <LoadingBar />
+                  <LoadingBar />
+                  <LoadingBar />
+                  <LoadingBar classname={'!w-[75%]'} />
+                </div>
+              ) : windowSize > 1024 ? (
                 <>
-                  <div className="flex flex-col gap-2">
-                    <LoadingBar />
-                    <LoadingBar />
-                    <LoadingBar />
-                    <LoadingBar />
-                    <LoadingBar />
-                    <LoadingBar />
-                    <LoadingBar />
-                    <LoadingBar />
-                    <LoadingBar classname={'!w-[75%]'} />
-                  </div>
+                  <p className="fade-in-fast">
+                    {blog?.article
+                      .split(' ')
+                      .slice(firstPortion, blog?.article.split(' ').length)
+                      .join(' ')}
+                  </p>
                 </>
-              ) : windowSize.width > 1024 ? (
-                <p className="fade-in-fast">
-                  {blog?.article
-                    .split(' ')
-                    .slice(firstPortion, blog?.article.split(' ').length)
-                    .join(' ')}
-                </p>
               ) : (
                 <p className="fade-in-fast">{blog?.article}</p>
               )}
