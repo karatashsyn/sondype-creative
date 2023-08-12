@@ -26,7 +26,7 @@ export default function Navbar() {
           isOpen ? 'bg-black opacity-75' : ''
         } sm:hidden sm:pointer-events-none ${isOpen ? '' : 'hidden'}`}
       ></div>
-      <Link href={'/'} className="cursor-pointer">
+      <Link href={'/'} className="cursor-pointer z-50">
         <div className="w-[200px] md:w-[240px]">
           <SondypeIcon />
         </div>
@@ -40,15 +40,15 @@ export default function Navbar() {
         <HamburgerMenu />
       </div>
       <ul
-        className={`flex gap-12 items-center max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:top-0 max-sm:flex-col  duration-200 max-sm:overflow-hidden max-sm:bg-gray-900 z-40 ${
+        className={`flex gap-12  items-center max-sm:fixed max-sm:left-0 max-sm:right-0 max-sm:top-0 max-sm:flex-col  duration-200 max-sm:overflow-hidden max-sm:bg-black z-40 max-sm:gap-6 ${
           isOpen ? 'max-sm:h-[70vh] max-sm:pt-[80px]' : 'max-sm:h-0'
         }`}
       >
         <NavLink name="Anasayfa" to="" />
         <NavLink name="İletişim" to="contact" />
-        <div className="pointer-events-none cursor-not-allowed">
-          <NavLink name="Hakkımızda" to="aboutUs" />
-        </div>
+
+        <NavLink name="Hakkımızda" to="aboutUs" />
+
         <NavLink name="Blog" to="blog" />
       </ul>
     </nav>

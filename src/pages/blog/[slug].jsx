@@ -6,6 +6,7 @@ import MainContainer from '@/components/UI/MainContainer'
 import useTextPortion from '@/hooks/useTextPortion'
 import { useRouter } from 'next/router'
 import useWindow from '@/hooks/useWindow'
+import berfinPng from './../../../public/berfin.png'
 import LoadingBar from '@/components/UI/Effects/LoadingBar'
 export default function Index() {
   const router = useRouter()
@@ -115,9 +116,7 @@ export default function Index() {
             </div>
           </div>
           <div className="flex gap-4 items-center">
-            {/* <div className="w-12 h-12"> */}
-            <img src="/berfin.png" className="" alt="" />
-            {/* </div> */}
+            <img src={berfinPng} className="" alt="" />
             <div className="flex flex-col text-[12px] gap-[2px] leading-none text-[rgb(220,220,220)]">
               <span>Berfin Uygun</span>
               <span>İçerik Editörü</span>
