@@ -1,10 +1,16 @@
 import React from 'react'
 import RootLayout from '@/app/layout'
+import GMaps from '@/components/PageComponents/GMaps'
+import MainContainer from '@/components/UI/MainContainer'
 
 export default function index() {
   return (
     <RootLayout>
-      <div className="w-4 h-5 ">contact</div>
+      <MainContainer>
+        <div className="mt-16">
+          <GMaps />
+        </div>
+      </MainContainer>
     </RootLayout>
   )
 }

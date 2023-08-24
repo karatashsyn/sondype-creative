@@ -11,7 +11,7 @@ export default function Index() {
   return (
     <RootLayout>
       <MainContainer>
-        <div className="grid xl:grid-cols-4 lg:grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-2 min-h-[70vh]">
+        <div className="w-full grid xl:grid-cols-4 lg:grid-cols-3 gap-x-4 gap-y-8 sm:grid-cols-2 min-h-[70vh]">
           {loading ? (
             fakeBlogsArray.map((b, i) => <LoadingBlogCard key={i} />)
           ) : blogs?.length ? (

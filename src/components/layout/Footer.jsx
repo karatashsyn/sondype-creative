@@ -2,17 +2,28 @@ import React from 'react'
 import TwitterIcon from '../UI/Icons/TwitterIcon'
 import InstagramIcon from '../UI/Icons/InstagramIcon'
 import LinkedinIcon from '../UI/Icons/LinkedinIcon'
+import Link from 'next/link'
 
 export default function Footer() {
   return (
-    <div className="w-full w-max-[100%] py-4 mt-32">
+    <div className="w-full w-max-[100%] py-4 mt-32 z-50">
       <div className="flex flex-col gap">
         <div className="text-center w-full flex gap-5 justify-center items-center">
-          <InstagramIcon />
+          <a
+            href={'https://www.instagram.com/sondypecreative/'}
+            target="_blank"
+          >
+            <InstagramIcon />
+          </a>
           <TwitterIcon />
-          <LinkedinIcon />
+          <a
+            href="https://www.linkedin.com/company/sondype-creative/"
+            target="_blank"
+          >
+            <LinkedinIcon />
+          </a>
         </div>
-        <a href="info@sondype.com" className="text-center mt-4 mb-6">
+        <a href="#" className="text-center mt-4 mb-6">
           info@sondype.com
         </a>
         <span className="text-[#6C6C6C] text-center mb-2">
