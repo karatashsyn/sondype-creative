@@ -2,7 +2,6 @@ import React from 'react'
 import TwitterIcon from '../UI/Icons/TwitterIcon'
 import InstagramIcon from '../UI/Icons/InstagramIcon'
 import LinkedinIcon from '../UI/Icons/LinkedinIcon'
-import Link from 'next/link'
 
 export default function Footer() {
   return (

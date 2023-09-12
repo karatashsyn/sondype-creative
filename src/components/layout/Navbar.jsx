@@ -4,7 +4,6 @@ import Link from 'next/link'
 import HamburgerMenu from '../UI/Icons/HamburgerIcon'
 import useWindow from '@/hooks/useWindow'
 import NavLink from '../UI/Links/NavLink'
-import MainContainer from '../UI/MainContainer'
 export default function Navbar() {
   const [isOpen, setIsOpen] = useState(false)
   const { windowSize } = useWindow()
@@ -49,9 +48,9 @@ export default function Navbar() {
           <NavLink name="Anasayfa" to="" />
           <NavLink name="İletişim" to="contact" />
 
-          <NavLink name="Hakkımızda" to="aboutUs" />
+          <NavLink name="Hakkımızda" to="about-us" />
 
-          <NavLink name="Blog" to="blog" />
+          <NavLink name="Blog" to="blogs" />
         </ul>
       </div>
     </nav>

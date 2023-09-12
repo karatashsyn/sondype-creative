@@ -1,14 +1,12 @@
-import React, { use, useEffect } from 'react'
-import Image from 'next/image'
+import React from 'react'
 import { useRouter } from 'next/router'
-import useWindow from '@/hooks/useWindow'
 export default function BlogCard({ blog }) {
   const router = useRouter()
 
   return (
     <div
       className={`p-2 flex flex-col justify-between mx-auto w-full max-w-[360px] h-[432px] cursor-pointer bg-gray-950 transition-colors duration-200 rounded-[5px] fade-in-fast`}
-      onClick={() => router.push(`/blog/${blog.slug}`)}
+      onClick={() => router.push(`/blogs/${blog.slug}`)}
     >
       <div>
         {/*  eslint-disable-next-line @next/next/no-img-element */}
@@ -24,7 +22,7 @@ export default function BlogCard({ blog }) {
           </h1>
         </div>
       </div>
-      <span className="px-1 py-2 text-[16px] text-gray-300">12/7/22</span>
+      <span className="px-1 py-2 text-[16px] text-gray-300">{blog.date}</span>
     </div>
   )
 }

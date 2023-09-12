@@ -222,12 +222,11 @@ export default function Home() {
                     opacity: `${subRatioCalculator(thirdRatio, 25, 52)}%`,
                   }}
                 >
-                  <span className="line-through  gilroyBold">Eskimek</span>{' '}
+                  <span className="line-through  gilroySemiBold">Eskimek</span>{' '}
                   <br />
-                  <span className="underline  gilroyBold">
-                    eskiye
-                  </span> göre <br />{' '}
-                  <span className=" gilroyBold">daha kolay.</span>
+                  <span className="underline  gilroySemiBold">eskiye</span>
+                  <span className="gilroySemiBold"> göre</span> <br />{' '}
+                  <span className=" gilroySemiBold">daha kolay.</span>
                 </div>
 
                 <div
@@ -252,13 +251,13 @@ export default function Home() {
                   />
                 </div>
                 <div
-                  className="rightContainer text-end xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0 gilroyBold"
+                  className="rightContainer text-end xl:text-[64px] lg:text-[48px] text-[36px] leading-none min-w-max opacity-0"
                   style={{
                     opacity: `${subRatioCalculator(thirdRatio, 58, 95)}%`,
                   }}
                 >
-                  <span className="gilroyBold">Çağı Yakala</span> <br />
-                  <span className="gilroyBold">Geride Kalma.</span>
+                  <span className="gilroySemiBold">Çağı yakala</span> <br />
+                  <span className="gilroySemiBold">geride kalma.</span>
                 </div>
               </div>
             </div>

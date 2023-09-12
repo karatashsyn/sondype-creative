@@ -6,7 +6,6 @@ import MainContainer from '@/components/UI/MainContainer'
 import useTextPortion from '@/hooks/useTextPortion'
 import { useRouter } from 'next/router'
 import useWindow from '@/hooks/useWindow'
-import berfinPng from './../../../public/berfin.png'
 import LoadingBar from '@/components/UI/Effects/LoadingBar'
 export default function Index() {
   const router = useRouter()
@@ -14,9 +13,6 @@ export default function Index() {
   const { firstPortion } = useTextPortion()
   const { blog, loading } = useGetBlog(slug)
   const { windowSize } = useWindow()
-  useEffect(() => {
-    console.log(firstPortion)
-  }, [firstPortion])
   return (
     <RootLayout>
       <MainContainer>
@@ -67,7 +63,20 @@ export default function Index() {
                     {blog?.title}
                   </h1>
                   <article className="max-lg:hidden fade-in-fast">
-                    {blog?.article.split(' ').slice(0, firstPortion).join(' ')}
+                    {blog?.article
+                      .split(' ')
+                      .slice(0, firstPortion)
+                      .join(' ')
+                      .split('<newline>')
+                      .map((part, i) => {
+                        return (
+                          <>
+                            <span key={i}>{part}</span>
+                            <br />
+                            <br />
+                          </>
+                        )
+                      })}
                   </article>
                 </>
               )}
@@ -107,7 +116,17 @@ export default function Index() {
                     {blog?.article
                       .split(' ')
                       .slice(firstPortion, blog?.article.split(' ').length)
-                      .join(' ')}
+                      .join(' ')
+                      .split('<newline>')
+                      .map((part, i) => {
+                        return (
+                          <>
+                            <span key={i}>{part}</span>
+                            <br />
+                            <br />
+                          </>
+                        )
+                      })}
                   </p>
                 </>
               ) : (
@@ -116,9 +135,13 @@ export default function Index() {
             </div>
           </div>
           <div className="flex gap-4 items-center">
-            <img src={berfinPng} className="" alt="" />
+            <img
+              src={'/' + blog?.avatar + '.png'}
+              className="w-12 h-12 rounded-full"
+              alt=""
+            />
             <div className="flex flex-col text-[12px] gap-[2px] leading-none text-[rgb(220,220,220)]">
-              <span>Berfin Uygun</span>
+              <span>{blog?.writer}</span>
               <span>İçerik Editörü</span>
               <span>info@sondype.com</span>
             </div>
