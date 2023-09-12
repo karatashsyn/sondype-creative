@@ -130,16 +130,27 @@ export default function Index() {
                   </p>
                 </>
               ) : (
-                <p className="fade-in-fast">{blog?.article}</p>
+                <p className="fade-in-fast">
+                  {blog?.article.split('<newline>').map((part, i) => {
+                    return (
+                      <>
+                        <span key={i}>{part}</span>
+                        <br />
+                        <br />
+                      </>
+                    )
+                  })}
+                </p>
               )}
             </div>
           </div>
           <div className="flex gap-4 items-center">
             <img
               src={'/' + blog?.avatar + '.png'}
-              className="w-12 h-12 rounded-full"
+              className="!w-12 aspect-square rounded-full"
               alt=""
             />
+
             <div className="flex flex-col text-[12px] gap-[2px] leading-none text-[rgb(220,220,220)]">
               <span>{blog?.writer}</span>
               <span>İçerik Editörü</span>
