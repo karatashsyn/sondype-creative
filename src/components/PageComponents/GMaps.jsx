@@ -14,7 +14,7 @@ export default function GMaps() {
           <img alt="Maps" src="/maps.png" className="max-md:rounded-[12px]" />
         </div>
       </a>
-      <div className="w-96 px-1">
+      <div className="max-w-[80vw] w-96 px-1">
         <span className=" text-[18px] ">
           1328/1. Sk. No:18 D:9 <br /> Yunus Emre, 34260 Sultangazi/İstanbul
           <br />
