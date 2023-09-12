@@ -6,13 +6,13 @@ export default function useTextDivider() {
 
   useEffect(() => {
     if (windowSize > 1460) {
-      setFirstPortion(126)
+      setFirstPortion(112)
     } else if (windowSize > 1380) {
-      setFirstPortion(114)
+      setFirstPortion(100)
     } else if (windowSize > 1260) {
-      setFirstPortion(106)
+      setFirstPortion(96)
     } else if (windowSize > 1128) {
-      setFirstPortion(86)
+      setFirstPortion(72)
     } else if (windowSize > 820) {
       setFirstPortion(64)
     } else if (windowSize > 768) {
