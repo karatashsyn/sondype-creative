@@ -147,7 +147,7 @@ export default function Index() {
           <div className="flex gap-4 items-center">
             <img
               src={'/' + blog?.avatar + '.png'}
-              className="!w-12 aspect-square rounded-full"
+              className="!w-12 aspect-square rounded-full object-cover object-center"
               alt=""
             />
 
