@@ -1,5 +1,5 @@
 /* eslint-disable @next/next/no-img-element */
-import React, { use, useEffect, useRef } from 'react'
+import React, { use, useEffect, useRef, useState } from 'react'
 import RootLayout from '@/app/layout'
 import useGetBlog from '@/hooks/useGetBlog'
 import MainContainer from '@/components/UI/MainContainer'
@@ -10,9 +10,15 @@ import LoadingBar from '@/components/UI/Effects/LoadingBar'
 export default function Index() {
   const router = useRouter()
   const slug = router.asPath.split('/')[2].toString()
-  const { firstPortion } = useTextPortion()
   const { blog, loading } = useGetBlog(slug)
+  const [numOfNewLines, setNumOfNewLines] = useState(0)
+  const { firstPortion } = useTextPortion(numOfNewLines)
   const { windowSize } = useWindow()
+  useEffect(() => {
+    if (!blog) return
+    const occurrences = (blog?.article?.match(/<newline>/g) || []).length
+    setNumOfNewLines(occurrences)
+  }, [blog])
   return (
     <RootLayout>
       <MainContainer>
@@ -64,6 +70,7 @@ export default function Index() {
                   </h1>
                   <article className="max-lg:hidden fade-in-fast">
                     {blog?.article
+
                       .split(' ')
                       .slice(0, firstPortion)
                       .join(' ')

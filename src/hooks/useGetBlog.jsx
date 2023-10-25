@@ -3,7 +3,7 @@ import { getBlog } from '@/db'
 
 export default function useGetBlog(slug) {
   const [loading, setLoading] = useState(true)
-  const [blog, setBlog] = useState(null)
+  const [blog, setBlog] = useState('')
   const [error, setError] = useState(null)
   useEffect(() => {
     setLoading(true)

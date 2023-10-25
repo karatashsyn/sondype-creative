@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import useWindow from './useWindow'
-export default function useTextDivider() {
+export default function useTextDivider(numOfNewLines) {
   const { windowSize } = useWindow()
   const [firstPortion, setFirstPortion] = useState(0)
-
   useEffect(() => {
     if (windowSize > 1460) {
       setFirstPortion(112)
@@ -21,5 +20,10 @@ export default function useTextDivider() {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [windowSize])
-  return { firstPortion }
+  return {
+    firstPortion:
+      numOfNewLines >= 4
+        ? firstPortion - 8 * 4
+        : firstPortion - 8 * numOfNewLines,
+  }
 }
