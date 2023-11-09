@@ -5,6 +5,10 @@ class MyDocument extends Document {
     return (
       <Html>
         <Head>
+          <meta
+            name="ahrefs-site-verification"
+            content="5d68cf6541eb0d46481ddd3ba1134d86a176d96f496c105b91e1f6d383a27568"
+          />
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{
