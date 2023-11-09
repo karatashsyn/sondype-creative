@@ -9,6 +9,10 @@ class MyDocument extends Document {
             name="ahrefs-site-verification"
             content="5d68cf6541eb0d46481ddd3ba1134d86a176d96f496c105b91e1f6d383a27568"
           />
+          <meta
+            name="google-site-verification"
+            content="HS0GbZWwQ0J8MyZkaoYlFS50xMQdmlXAzxWoUZ6t6pg"
+          />
           <script
             type="text/javascript"
             dangerouslySetInnerHTML={{
